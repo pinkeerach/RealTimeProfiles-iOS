@@ -78,6 +78,10 @@
                                                 </constraints>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="u13-BW-Vj7"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="MJ6-sc-E57"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                             </stackView>

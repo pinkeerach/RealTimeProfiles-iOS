@@ -23,3 +23,20 @@ class ProfilesViewController: UIViewController {
 
 }
 
+extension ProfilesViewController : UICollectionViewDelegate {
+    
+}
+
+extension ProfilesViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath)
+        
+        return cell
+    }
+    
+    
+}
