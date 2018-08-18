@@ -10,9 +10,12 @@ import UIKit
 
 class ProfilesViewController: UIViewController {
 
+    let profileViewModel = ProfileViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        profileViewModel.fetchProfiles()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,11 +32,20 @@ extension ProfilesViewController : UICollectionViewDelegate {
 
 extension ProfilesViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return profileViewModel.profiles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as? ProfileCollectionViewCell else {
+            
+            return UICollectionViewCell()
+        }
+        
+        let profile = profileViewModel.profiles[indexPath.row]
+        
+        cell.nameLabel.text = profile.getFirstNameLastName()
+        cell.ageLabel.text = String(profile.age)
+        cell.hobbiesLabel.text = profile.hobbies.description
         
         return cell
     }
