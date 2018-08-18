@@ -7,6 +7,8 @@ target 'RealTimeProfiles' do
 
   # Pods for RealTimeProfiles
   pod 'Firebase/Core', '5.6.0'
+  pod 'Fabric', '1.7.11'
+  pod 'Crashlytics', '3.10.7'
 
   target 'RealTimeProfilesTests' do
     inherit! :search_paths
