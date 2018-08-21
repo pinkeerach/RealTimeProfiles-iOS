@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profiles View Controller-->
+        <!--Profiles-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ProfilesViewController" customModule="RealTimeProfiles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profiles" id="BYZ-38-t0r" customClass="ProfilesViewController" customModule="RealTimeProfiles" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,13 +138,78 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="W3q-Bm-5D0">
+                    <navigationItem key="navigationItem" title="Profiles" id="W3q-Bm-5D0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cL7-EA-FFA"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="l2m-sM-jVo" kind="presentation" identifier="presentLoginSegue" id="TBF-b4-9wu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1029.375" y="32.74647887323944"/>
+        </scene>
+        <!--Log In-->
+        <scene sceneID="OpO-rD-yXx">
+            <objects>
+                <viewController title="Log In" id="l2m-sM-jVo" customClass="LoginViewController" customModule="RealTimeProfiles" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rdh-s1-9Se">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2rf-7x-BZV">
+                                <rect key="frame" x="40" y="90" width="240" height="171"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7te-p2-Uir">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gQ-nB-iP3">
+                                        <rect key="frame" x="0.0" y="30.5" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-xY-XxV">
+                                        <rect key="frame" x="0.0" y="70.5" width="240" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="td8-k1-bsy">
+                                        <rect key="frame" x="0.0" y="101" width="240" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-E3-Tu7">
+                                        <rect key="frame" x="0.0" y="141" width="240" height="30"/>
+                                        <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <action selector="loginButtonTouchUpInside:" destination="l2m-sM-jVo" eventType="touchUpInside" id="bHu-va-Hgv"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="td8-k1-bsy" firstAttribute="width" secondItem="3gQ-nB-iP3" secondAttribute="width" id="Tq9-YU-HXS"/>
+                                    <constraint firstItem="gqd-E3-Tu7" firstAttribute="width" secondItem="td8-k1-bsy" secondAttribute="width" id="Vn0-4P-NaI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2rf-7x-BZV" firstAttribute="leading" secondItem="nki-jE-6Gz" secondAttribute="leading" constant="40" id="K5e-jz-6Gr"/>
+                            <constraint firstItem="2rf-7x-BZV" firstAttribute="top" secondItem="nki-jE-6Gz" secondAttribute="top" constant="70" id="gKy-OB-2FC"/>
+                            <constraint firstItem="nki-jE-6Gz" firstAttribute="trailing" secondItem="2rf-7x-BZV" secondAttribute="trailing" constant="40" id="ttd-A7-R3q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nki-jE-6Gz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UJB-Ah-p27" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1862" y="315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="803-0m-vQe">

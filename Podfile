@@ -7,6 +7,7 @@ target 'RealTimeProfiles' do
 
   # Pods for RealTimeProfiles
   pod 'Firebase/Core', '5.6.0'
+  pod 'Firebase/Database', '5.6.0'
   pod 'Fabric', '1.7.11'
   pod 'Crashlytics', '3.10.7'
 

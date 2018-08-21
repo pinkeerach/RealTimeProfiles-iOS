@@ -15,6 +15,10 @@ class ProfilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if true {
+            presentLogin()
+        }
+        
         profileViewModel.fetchProfiles()
     }
 
@@ -22,8 +26,34 @@ class ProfilesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Constants.PRESENT_LOGIN_SEGUE:
+            if let loginViewController = segue.destination as? LoginViewController {
+                loginViewController.delegate = self
+            }
+        default:
+            break
+        }
+        
+    }
 
+    private func presentLogin() {
+        performSegue(withIdentifier: Constants.PRESENT_LOGIN_SEGUE, sender: self)
+    }
 
+}
+
+extension ProfilesViewController : LoginViewDelegate {
+    func loginDidSucceed() {
+        dismiss(animated: true) {
+        }
+    }
+    
+    func logingDidFail() {
+        
+    }
 }
 
 extension ProfilesViewController : UICollectionViewDelegate {
