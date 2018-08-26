@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
 class ProfileViewModel {
     
@@ -24,4 +25,19 @@ class ProfileViewModel {
         }
     }
     
+    func getProfiles() {
+        var ref = Database.database().reference()
+        
+        ref.child("")
+    }
+    
+    func createProfile(withProfile profile: Profile) {
+        
+        var ref = Database.database().reference()
+        
+        ref.child("users").child(String(profile.identifier)).setValue(["firstName": profile.firstName])
+        ref.child("users").child(String(profile.identifier)).setValue(["lastName": profile.lastName])
+        ref.child("users").child(String(profile.identifier)).setValue(["profileImageUrl": profile.profilePicture])
+        ref.child("users").child(String(profile.identifier)).setValue(["age": String(profile.age)])
+    }
 }

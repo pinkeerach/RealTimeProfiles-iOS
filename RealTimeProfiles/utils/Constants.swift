@@ -11,5 +11,6 @@ import Foundation
 struct Constants {
     
     static let PRESENT_LOGIN_SEGUE = "presentLoginSegue"
+    static let PRESENT_CREATE_PROFILE_SEGUE = "presentCreateProfileSegue"
     
 }

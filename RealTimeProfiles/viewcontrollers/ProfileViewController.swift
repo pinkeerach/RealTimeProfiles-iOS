@@ -15,9 +15,7 @@ class ProfilesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if true {
-            presentLogin()
-        }
+        presentLogin()
         
         profileViewModel.fetchProfiles()
     }
@@ -32,6 +30,10 @@ class ProfilesViewController: UIViewController {
         case Constants.PRESENT_LOGIN_SEGUE:
             if let loginViewController = segue.destination as? LoginViewController {
                 loginViewController.delegate = self
+            }
+        case Constants.PRESENT_CREATE_PROFILE_SEGUE:
+            if let createProfileViewController = segue.destination as? CreateProfileViewController {
+                createProfileViewController.delegate = self
             }
         default:
             break
@@ -80,5 +82,14 @@ extension ProfilesViewController : UICollectionViewDataSource {
         return cell
     }
     
+}
+
+extension ProfilesViewController: CreateProfileViewControllerDelegate {
+    func profileCreationCancelled() {
+        
+    }
     
+    func profileCreated() {
+        
+    }
 }
