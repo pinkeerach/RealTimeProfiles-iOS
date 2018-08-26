@@ -17,11 +17,13 @@ profile
 *.moved-aside
 DerivedData
 .idea/
-Pods/
+# Pods/
 *.lock
 *.hmap
 *.ipa
 *.xcuserstate
+
+RealTimeProfiles/configs/GoogleService-Info.plist
 
 ### playgrounds
 playground.xcworkspace

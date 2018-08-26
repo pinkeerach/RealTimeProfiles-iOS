@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol LoginViewDelegate {
     func loginDidSucceed()
@@ -15,12 +16,21 @@ protocol LoginViewDelegate {
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var loginbutton: UIButton!
+    
     var delegate : LoginViewDelegate?
+    let loginViewModel : LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        loginViewModel.delegate = self
+        
+        toggleActivity(isOn: false) //because activity indicators are pesky
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,9 +49,56 @@ class LoginViewController: UIViewController {
     }
     */
     @IBAction func loginButtonTouchUpInside(_ sender: Any) {
-        if let del = delegate {
+        
+        toggleActivity(isOn: true)
+        
+        guard let username = usernameTextfield.text,
+            let password = passwordTextfield.text,
+            usernameTextfield.text != "",
+            passwordTextfield.text != "" else {
+            
+                errorLabel.isHidden = false
+                errorLabel.text = "Username & password cannot be blank"
+                
+                toggleActivity(isOn: false)
+                return
+        }
+        
+        errorLabel.isHidden = true
+        
+        loginViewModel.authenticate(withUsername: username, password: password)
+        
+    }
+    
+    private func handleAuthenticationComplete(withUser: AuthDataResult?, error: Error?) {
+        if let _ = error {
+            
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = "Invalid credentials"
+            self.toggleActivity(isOn: false)
+            return
+        }
+        
+        if let del = self.delegate {
             del.loginDidSucceed()
+            self.toggleActivity(isOn: false)
         }
     }
     
+    private func toggleActivity(isOn: Bool) {
+        if isOn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        loginbutton.isHidden = isOn
+        activityIndicator.isHidden = !isOn
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    
+    func authenticationReturned(withUser: AuthDataResult?, error: Error?) {
+        handleAuthenticationComplete(withUser: withUser, error: error)
+    }
 }

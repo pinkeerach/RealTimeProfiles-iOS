@@ -19,6 +19,7 @@
 		963488F12124F7010060318B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963488F02124F7010060318B /* ProfileViewController.swift */; };
 		963488F72124F8000060318B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 963488F52124F8000060318B /* GoogleService-Info.plist */; };
 		963488F82124F8000060318B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 963488F62124F8000060318B /* Info.plist */; };
+		9655C6AB21333FC3001C56C3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655C6AA21333FC3001C56C3 /* LoginViewModel.swift */; };
 		9661082F2128C93C0070BD47 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661082E2128C93C0070BD47 /* Profile.swift */; };
 		966108322128CED40070BD47 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966108312128CED40070BD47 /* ProfileViewModel.swift */; };
 		96D4832D2128C20E00ADF55C /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4832C2128C20E00ADF55C /* ProfileCollectionViewCell.swift */; };
@@ -64,6 +65,7 @@
 		963488F02124F7010060318B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		963488F52124F8000060318B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		963488F62124F8000060318B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9655C6AA21333FC3001C56C3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9661082E2128C93C0070BD47 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		966108312128CED40070BD47 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		96D4832C2128C20E00ADF55C /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				966108312128CED40070BD47 /* ProfileViewModel.swift */,
+				9655C6AA21333FC3001C56C3 /* LoginViewModel.swift */,
 			);
 			path = viewmodels;
 			sourceTree = "<group>";
@@ -417,12 +420,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RealTimeProfiles/Pods-RealTimeProfiles-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -474,6 +479,7 @@
 				963488F12124F7010060318B /* ProfileViewController.swift in Sources */,
 				9661082F2128C93C0070BD47 /* Profile.swift in Sources */,
 				96D4832D2128C20E00ADF55C /* ProfileCollectionViewCell.swift in Sources */,
+				9655C6AB21333FC3001C56C3 /* LoginViewModel.swift in Sources */,
 				96F1658E212BA2BE0018BC4B /* Constants.swift in Sources */,
 				963488BD2124F3980060318B /* AppDelegate.swift in Sources */,
 				966108322128CED40070BD47 /* ProfileViewModel.swift in Sources */,

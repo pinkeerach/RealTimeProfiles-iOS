@@ -170,7 +170,7 @@
                                         <rect key="frame" x="0.0" y="30.5" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" textContentType="username"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sM4-xY-XxV">
                                         <rect key="frame" x="0.0" y="70.5" width="240" height="20.5"/>
@@ -182,7 +182,7 @@
                                         <rect key="frame" x="0.0" y="101" width="240" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-E3-Tu7">
                                         <rect key="frame" x="0.0" y="141" width="240" height="30"/>
@@ -191,6 +191,16 @@
                                             <action selector="loginButtonTouchUpInside:" destination="l2m-sM-jVo" eventType="touchUpInside" id="bHu-va-Hgv"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="x3R-Mt-1SW">
+                                        <rect key="frame" x="0.0" y="171" width="240" height="0.0"/>
+                                        <color key="color" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid credentials." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PX5-2m-1Zc">
+                                        <rect key="frame" x="0.0" y="171" width="240" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="td8-k1-bsy" firstAttribute="width" secondItem="3gQ-nB-iP3" secondAttribute="width" id="Tq9-YU-HXS"/>
@@ -206,6 +216,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nki-jE-6Gz"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="x3R-Mt-1SW" id="2sR-N8-Vsb"/>
+                        <outlet property="errorLabel" destination="PX5-2m-1Zc" id="mV8-ev-uLh"/>
+                        <outlet property="loginbutton" destination="gqd-E3-Tu7" id="IlQ-fn-eXW"/>
+                        <outlet property="passwordTextfield" destination="td8-k1-bsy" id="BIl-oQ-Ogd"/>
+                        <outlet property="usernameTextfield" destination="3gQ-nB-iP3" id="zq2-D9-hC4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJB-Ah-p27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
