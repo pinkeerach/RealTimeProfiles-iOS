@@ -9,13 +9,13 @@
 import Foundation
 
 struct Profile: Decodable {
-    let identifier : Int
+    let identifier : String? //when it's null, it's new
     let firstName : String
     let lastName : String
     let profilePicture : String
     let age : Int
     // TODO: dateOfBirth
-    let hobbies : [String]
+    let hobbies : String
     let gender : String
     
     func getFirstNameLastName() -> String {
@@ -24,5 +24,14 @@ struct Profile: Decodable {
     
     func getLastNameFirstName() -> String {
         return "\(self.lastName), \(self.firstName)"
+    }
+    
+    func getData() -> [String : Any?] {
+        return [ "firstName" : firstName,
+                "lastName" : lastName,
+                "profileImage" : profilePicture,
+                "age" : age,
+                "hobbies" : hobbies,
+                "gender" : gender ]
     }
 }

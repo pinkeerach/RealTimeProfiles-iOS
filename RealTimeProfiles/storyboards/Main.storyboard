@@ -283,6 +283,7 @@
                     <connections>
                         <outlet property="firstNameTextfield" destination="QIq-bk-y2x" id="Ze3-ru-lh2"/>
                         <outlet property="genderTextfield" destination="7So-E0-pIp" id="sYJ-qd-Nb8"/>
+                        <outlet property="hobbiesTextfield" destination="Fvv-hd-O7Q" id="Fnl-vO-Xq2"/>
                         <outlet property="lastNameTextfield" destination="u6M-m1-b6u" id="MU7-WG-iVL"/>
                         <outlet property="profileImageUrlTextfield" destination="xRL-Af-0Eo" id="85O-HU-l2X"/>
                     </connections>

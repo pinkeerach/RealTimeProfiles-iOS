@@ -19,6 +19,7 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var genderTextfield: UITextField!
     @IBOutlet weak var profileImageUrlTextfield: UITextField!
+    @IBOutlet weak var hobbiesTextfield: UITextField!
     
     var delegate: CreateProfileViewControllerDelegate?
     
@@ -60,10 +61,13 @@ class CreateProfileViewController: UIViewController {
         if let firstname = firstNameTextfield.text,
             let lastname = lastNameTextfield.text,
             let profileimage = profileImageUrlTextfield.text,
-            let gender = genderTextfield.text {
+            let gender = genderTextfield.text,
+            let hobbies = hobbiesTextfield.text {
             
-            profileViewModel.createProfile(firstName: firstname, lastName: lastname, profilePicture: profileimage, age: 21, hobbies: "hobbies", gender: gender)
+            let profile = Profile(identifier: nil, firstName: firstname, lastName: lastname, profilePicture: profileimage, age: 12, hobbies: hobbies, gender: gender)
             
+            profileViewModel.createProfile(withProfile: profile)
+
             self.dismiss(animated: true) {}
         }
         
