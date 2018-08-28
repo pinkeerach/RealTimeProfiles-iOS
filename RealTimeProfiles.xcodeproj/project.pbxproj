@@ -18,7 +18,6 @@
 		963488EE2124F6F80060318B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 963488EC2124F6F80060318B /* Main.storyboard */; };
 		963488F12124F7010060318B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963488F02124F7010060318B /* ProfileViewController.swift */; };
 		963488F72124F8000060318B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 963488F52124F8000060318B /* GoogleService-Info.plist */; };
-		963488F82124F8000060318B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 963488F62124F8000060318B /* Info.plist */; };
 		9655C6AB21333FC3001C56C3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655C6AA21333FC3001C56C3 /* LoginViewModel.swift */; };
 		9655C6AD213349FC001C56C3 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9655C6AC213349FC001C56C3 /* CreateProfileViewController.swift */; };
 		9661082F2128C93C0070BD47 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9661082E2128C93C0070BD47 /* Profile.swift */; };
@@ -358,7 +357,6 @@
 				963488EE2124F6F80060318B /* Main.storyboard in Resources */,
 				963488F72124F8000060318B /* GoogleService-Info.plist in Resources */,
 				963488C42124F3990060318B /* Assets.xcassets in Resources */,
-				963488F82124F8000060318B /* Info.plist in Resources */,
 				963488ED2124F6F80060318B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +641,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RealTimeProfiles/configs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -661,6 +660,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RealTimeProfiles/configs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

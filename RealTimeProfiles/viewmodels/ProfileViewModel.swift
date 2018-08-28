@@ -15,9 +15,9 @@ class ProfileViewModel {
     
     func fetchProfiles() {
         if profiles.count < 1 {
-            let p1 = Profile(identifier: 123, firstName: "Jeff", lastName: "Lebowski", profilePicture: "null", age: 45, hobbies: ["bowling", "listening to music", "hot baths"])
-            let p2 = Profile(identifier: 34, firstName: "Bunny", lastName: "Lebowski", profilePicture: "null", age: 22, hobbies: ["cosmetology", "road trips", "acting"])
-            let p3 = Profile(identifier: 436, firstName: "Walter", lastName: "", profilePicture: "null", age: 43, hobbies: ["bowling", "guns", "war memorabilia"])
+            let p1 = Profile(identifier: 123, firstName: "Jeff", lastName: "Lebowski", profilePicture: "null", age: 45, hobbies: ["bowling", "listening to music", "hot baths"], gender: "male")
+            let p2 = Profile(identifier: 34, firstName: "Bunny", lastName: "Lebowski", profilePicture: "null", age: 22, hobbies: ["cosmetology", "road trips", "acting"], gender: "non-binary")
+            let p3 = Profile(identifier: 436, firstName: "Walter", lastName: "", profilePicture: "null", age: 43, hobbies: ["bowling", "guns", "war memorabilia"], gender: "female")
             
             profiles.append(p1)
             profiles.append(p2)
@@ -25,19 +25,29 @@ class ProfileViewModel {
         }
     }
     
-    func getProfiles() {
-        var ref = Database.database().reference()
+//    func getProfiles() {
+//        var ref = Database.database().reference()
+//
+//        ref.child("")
+//    }
+    
+    func createProfile(firstName: String, lastName: String, profilePicture: String, age: Int, hobbies: String, gender: String) {
         
-        ref.child("")
+        let ref = Database.database().reference().child("profiles").childByAutoId()
+        
+//        ref.setValue(["lastName": lastName])
+//        ref.setValue(["profileImageUrl": profilePicture])
+//        ref.setValue(["age": String(age)])
+//        ref.setValue(["gender": gender])
+        
+        ref.setValue(["firstName": firstName]) { (error, reference) in
+            
+        }
     }
     
-    func createProfile(withProfile profile: Profile) {
-        
-        var ref = Database.database().reference()
-        
-        ref.child("users").child(String(profile.identifier)).setValue(["firstName": profile.firstName])
-        ref.child("users").child(String(profile.identifier)).setValue(["lastName": profile.lastName])
-        ref.child("users").child(String(profile.identifier)).setValue(["profileImageUrl": profile.profilePicture])
-        ref.child("users").child(String(profile.identifier)).setValue(["age": String(profile.age)])
-    }
+//    func fetchProfile(byId identifier: String) {
+//        let ref = Database.database().reference().child("users")
+//
+//
+//    }
 }

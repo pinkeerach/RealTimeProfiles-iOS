@@ -15,7 +15,14 @@ protocol CreateProfileViewControllerDelegate {
 
 class CreateProfileViewController: UIViewController {
 
+    @IBOutlet weak var firstNameTextfield: UITextField!
+    @IBOutlet weak var lastNameTextfield: UITextField!
+    @IBOutlet weak var genderTextfield: UITextField!
+    @IBOutlet weak var profileImageUrlTextfield: UITextField!
+    
     var delegate: CreateProfileViewControllerDelegate?
+    
+    let profileViewModel: ProfileViewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,5 +53,19 @@ class CreateProfileViewController: UIViewController {
 //        if let del = delegate {
 //            del.profileCreationCancelled()
 //        }
+    }
+    
+    @IBAction func submitNewProfile() {
+        
+        if let firstname = firstNameTextfield.text,
+            let lastname = lastNameTextfield.text,
+            let profileimage = profileImageUrlTextfield.text,
+            let gender = genderTextfield.text {
+            
+            profileViewModel.createProfile(firstName: firstname, lastName: lastname, profilePicture: profileimage, age: 21, hobbies: "hobbies", gender: gender)
+            
+            self.dismiss(animated: true) {}
+        }
+        
     }
 }

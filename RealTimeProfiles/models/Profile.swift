@@ -16,6 +16,7 @@ struct Profile: Decodable {
     let age : Int
     // TODO: dateOfBirth
     let hobbies : [String]
+    let gender : String
     
     func getFirstNameLastName() -> String {
         return "\(self.firstName) \(self.lastName)"
