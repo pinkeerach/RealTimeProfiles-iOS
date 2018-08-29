@@ -89,6 +89,18 @@ extension ProfilesViewController : UICollectionViewDataSource {
         cell.ageLabel.text = String(profile.age)
         cell.hobbiesLabel.text = profile.hobbies.description
         
+        switch profile.gender {
+        case "female":
+            cell.backgroundColor = Constants.PINK_COLOR
+            break
+        case "male":
+            cell.backgroundColor = Constants.BLUE_COLOR
+            break
+        default:
+            cell.backgroundColor = Constants.GREEN_COLOR
+            break
+        }
+        
         return cell
     }
     
