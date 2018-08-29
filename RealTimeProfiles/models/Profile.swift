@@ -18,6 +18,14 @@ struct Profile: Decodable {
     let hobbies : String
     let gender : String
     
+    static let identifierKey = "identifier"
+    static let firstNameKey = "firstName"
+    static let lastNameKey = "lastName"
+    static let profileImageKey = "profileImage"
+    static let ageKey = "age"
+    static let hobbiesKey = "hobbies"
+    static let genderKey = "gender"
+    
     func getFirstNameLastName() -> String {
         return "\(self.firstName) \(self.lastName)"
     }
@@ -27,11 +35,48 @@ struct Profile: Decodable {
     }
     
     func getData() -> [String : Any?] {
-        return [ "firstName" : firstName,
-                "lastName" : lastName,
-                "profileImage" : profilePicture,
-                "age" : age,
-                "hobbies" : hobbies,
-                "gender" : gender ]
+        return [ Profile.firstNameKey : firstName,
+                Profile.lastNameKey : lastName,
+                Profile.profileImageKey : profilePicture,
+                Profile.ageKey : age,
+                Profile.hobbiesKey : hobbies,
+                Profile.genderKey : gender ]
+    }
+    
+    static func createProfile(withData profileData: [String : Any?], identifier: String) -> Profile {
+        
+        var firstName = "", lastName = "", profileImage = "", age = 0, hobbies = "", gender = ""
+        
+        for item in profileData {
+            
+            if let theValue = item.value as? String {
+                switch item.key {
+                case Profile.firstNameKey:
+                    firstName = theValue
+                    break
+                case Profile.lastNameKey:
+                    lastName = theValue
+                    break
+                case Profile.profileImageKey:
+                    profileImage = theValue
+                    break
+                case Profile.hobbiesKey:
+                    hobbies = theValue
+                    break
+                case Profile.genderKey:
+                    gender = theValue
+                    break
+                default:
+                    break
+                }
+            }else if let theValue = item.value as? Int {
+                age = theValue
+            }
+
+        }
+        
+        let profile = Profile(identifier: identifier, firstName: firstName, lastName: lastName, profilePicture: profileImage, age: age, hobbies: hobbies, gender: gender)
+            
+        return profile
     }
 }

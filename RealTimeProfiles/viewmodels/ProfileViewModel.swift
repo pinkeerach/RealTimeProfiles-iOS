@@ -9,27 +9,37 @@
 import Foundation
 import FirebaseDatabase
 
+protocol ProfileViewModelDelegate {
+    func profilesChanged()
+}
+
 class ProfileViewModel {
+    
+    var delegate: ProfileViewModelDelegate?
     
     var profiles: [Profile] = []
     
-    func fetchProfiles() {
-//        if profiles.count < 1 {
-//            let p1 = Profile(identifier: 123, firstName: "Jeff", lastName: "Lebowski", profilePicture: "null", age: 45, hobbies: ["bowling", "listening to music", "hot baths"], gender: "male")
-//            let p2 = Profile(identifier: 34, firstName: "Bunny", lastName: "Lebowski", profilePicture: "null", age: 22, hobbies: ["cosmetology", "road trips", "acting"], gender: "non-binary")
-//            let p3 = Profile(identifier: 436, firstName: "Walter", lastName: "", profilePicture: "null", age: 43, hobbies: ["bowling", "guns", "war memorabilia"], gender: "female")
+    func getProfiles() {
+        let profilesRef = Database.database().reference(withPath: "profiles")
+        
+        profiles = []
+        
+        profilesRef.observe(DataEventType.childAdded) { snapshot in
+            
+            let key = snapshot.key
+
+            if let array = snapshot.valueInExportFormat() as? [String: Any?] {
+                let profile = Profile.createProfile(withData: array, identifier: key)
+                print(profile)
+                self.profiles.append(profile)
+            }
+            
+        }
+        
+//        profilesRef.observe(.childChanged) { snapshot in
 //
-//            profiles.append(p1)
-//            profiles.append(p2)
-//            profiles.append(p3)
 //        }
     }
-    
-//    func getProfiles() {
-//        var ref = Database.database().reference()
-//
-//        ref.child("")
-//    }
     
     func createProfile(withProfile profile: Profile) {
         

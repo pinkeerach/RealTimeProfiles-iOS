@@ -17,7 +17,7 @@ class ProfilesViewController: UIViewController {
         
         presentLogin()
         
-        profileViewModel.fetchProfiles()
+        profileViewModel.getProfiles()
     }
 
     override func didReceiveMemoryWarning() {
