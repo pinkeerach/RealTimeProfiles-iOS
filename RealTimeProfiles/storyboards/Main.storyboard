@@ -145,6 +145,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="profilesCollectionView" destination="hjC-zh-Lac" id="n64-3r-QOX"/>
                         <segue destination="l2m-sM-jVo" kind="presentation" identifier="presentLoginSegue" id="TBF-b4-9wu"/>
                     </connections>
                 </viewController>

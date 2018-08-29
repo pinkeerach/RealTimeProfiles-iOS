@@ -10,14 +10,15 @@ import UIKit
 
 class ProfilesViewController: UIViewController {
 
+    @IBOutlet weak var profilesCollectionView: UICollectionView!
+
     let profileViewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presentLogin()
-        
-        profileViewModel.getProfiles()
+        profileViewModel.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,12 +50,21 @@ class ProfilesViewController: UIViewController {
 
 extension ProfilesViewController : LoginViewDelegate {
     func loginDidSucceed() {
+        
         dismiss(animated: true) {
         }
+        
+        profileViewModel.getProfiles()
     }
     
     func logingDidFail() {
         
+    }
+}
+
+extension ProfilesViewController : ProfileViewModelDelegate {
+    func profilesChanged() {
+        profilesCollectionView.reloadData()
     }
 }
 
