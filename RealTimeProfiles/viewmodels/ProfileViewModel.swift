@@ -30,7 +30,7 @@ class ProfileViewModel {
 
             if let array = snapshot.valueInExportFormat() as? [String: Any?] {
                 let profile = Profile.createProfile(withData: array, identifier: key)
-                print(profile)
+                
                 self.profiles.append(profile)
                 
                 if let delegate = self.delegate {

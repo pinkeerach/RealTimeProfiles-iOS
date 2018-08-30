@@ -11,14 +11,20 @@ import UIKit
 class ProfilesViewController: UIViewController {
 
     @IBOutlet weak var profilesCollectionView: UICollectionView!
+    @IBOutlet weak var sortPickerView: UIPickerView!
 
     let profileViewModel = ProfileViewModel()
+    let sortData: [String] = ["Age - Ascending","Age - Descending","Name - Ascending","Name - Descending"]
+    let filterData: [String] = ["Female","Male","Other"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         presentLogin()
         profileViewModel.delegate = self
+        
+        sortPickerView.dataSource = self
+        sortPickerView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +72,18 @@ extension ProfilesViewController : ProfileViewModelDelegate {
     func profilesChanged() {
         profilesCollectionView.reloadData()
     }
+}
+
+extension ProfilesViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sortData.count
+    }
+    
+    
 }
 
 extension ProfilesViewController : UICollectionViewDelegate {
