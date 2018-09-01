@@ -41,7 +41,28 @@ class ProfileViewModel {
         }
         
         profilesRef.observe(.childChanged) { snapshot in
-            print("CHILD CHANGED : \(snapshot)")
+            //print("CHILD CHANGED : \(snapshot)")
+            
+            let key = snapshot.key
+            
+            let newProfiles = self.profiles.map({ (profile) -> Profile in
+                
+                if profile.identifier == key {
+                    if let array = snapshot.valueInExportFormat() as? [String: Any?] {
+                        let modifiedProfile = Profile.createProfile(withData: array, identifier: key)
+                        return modifiedProfile
+                    }
+                    return profile
+                }
+                
+                return profile
+            })
+            
+            self.profiles = newProfiles
+            
+            if let delegate = self.delegate {
+                delegate.profilesChanged()
+            }
         }
     }
     
@@ -57,12 +78,6 @@ class ProfileViewModel {
             }
         }
     }
-    
-//    func fetchProfile(byId identifier: String) {
-//        let ref = Database.database().reference().child("users")
-//
-//
-//    }
     
     func loadImage(fromUrl urlString: String) -> UIImage? {
         if let url = URL(string: urlString) {
