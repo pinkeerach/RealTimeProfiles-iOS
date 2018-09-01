@@ -34,9 +34,13 @@ class ProfilesViewController: UIViewController {
             if let loginViewController = segue.destination as? LoginViewController {
                 loginViewController.delegate = self
             }
-        case Constants.PRESENT_CREATE_PROFILE_SEGUE:
-            if let createProfileViewController = segue.destination as? CreateProfileViewController {
-                createProfileViewController.delegate = self
+        case Constants.PRESENT_PROFILE_DETAIL_SEGUE:
+            
+            if let detailViewController = segue.destination as? ProfileDetailViewController,
+                let selectedCell = sender as? ProfileCollectionViewCell,
+                let selectedProfile = selectedCell.profile {
+                
+                detailViewController.selectedProfile = selectedProfile
             }
         default:
             break
@@ -46,11 +50,6 @@ class ProfilesViewController: UIViewController {
 
     private func presentLogin() {
         performSegue(withIdentifier: Constants.PRESENT_LOGIN_SEGUE, sender: self)
-    }
-
-    
-    @IBAction func sortFilterButtonTapped(_ sender: Any) {
-        
     }
     
 }
@@ -65,7 +64,7 @@ extension ProfilesViewController : LoginViewDelegate {
     }
     
     func logingDidFail() {
-        
+        // TODO
     }
 }
 
@@ -75,11 +74,7 @@ extension ProfilesViewController : ProfileViewModelDelegate {
     }
 }
 
-extension ProfilesViewController : UICollectionViewDelegate {
-    
-}
-
-extension ProfilesViewController : UICollectionViewDataSource {
+extension ProfilesViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return profileViewModel.profiles.count
     }
@@ -91,6 +86,7 @@ extension ProfilesViewController : UICollectionViewDataSource {
         }
         
         let profile = profileViewModel.profiles[indexPath.row]
+        cell.profile = profile
         
         cell.nameLabel.text = profile.getFirstNameLastName()
         cell.ageLabel.text = String(profile.age)
@@ -116,14 +112,4 @@ extension ProfilesViewController : UICollectionViewDataSource {
         return cell
     }
     
-}
-
-extension ProfilesViewController: CreateProfileViewControllerDelegate {
-    func profileCreationCancelled() {
-        
-    }
-    
-    func profileCreated() {
-        
-    }
 }

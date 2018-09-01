@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol CreateProfileViewControllerDelegate {
-    func profileCreated()
-    func profileCreationCancelled()
-}
 
 class CreateProfileViewController: UIViewController {
 
@@ -22,7 +18,6 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var hobbiesTextfield: UITextField!
     
     @IBOutlet weak var ageTextField: UITextField!
-    var delegate: CreateProfileViewControllerDelegate?
     
     let profileViewModel: ProfileViewModel = ProfileViewModel()
     

@@ -22,7 +22,16 @@ class ProfileDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        if let profile = selectedProfile {
+            firstNameTextField.text = profile.firstName
+            lastNameTextField.text = profile.lastName
+            genderTextField.text = profile.gender
+            hobbiesTextField.text = profile.hobbies
+            
+            if let profileImage = profileViewModel.loadImage(fromUrl: profile.profilePicture) {
+                imageView.image = profileImage
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
