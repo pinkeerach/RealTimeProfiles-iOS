@@ -31,6 +31,8 @@ class LoginViewController: UIViewController {
         loginViewModel.delegate = self
         
         toggleActivity(isOn: false) //because activity indicators are pesky
+        
+        usernameTextfield.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

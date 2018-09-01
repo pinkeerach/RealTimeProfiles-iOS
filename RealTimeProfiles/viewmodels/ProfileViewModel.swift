@@ -91,6 +91,6 @@ class ProfileViewModel {
             }
         }
         
-        return UIImage(named: "rachAtTrevi-300")
+        return UIImage(named: "rachAtTrevi-300") //default
     }
 }
