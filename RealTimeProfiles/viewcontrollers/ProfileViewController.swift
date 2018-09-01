@@ -11,11 +11,9 @@ import UIKit
 class ProfilesViewController: UIViewController {
 
     @IBOutlet weak var profilesCollectionView: UICollectionView!
-    @IBOutlet weak var sortPickerView: UIPickerView!
-
+    @IBOutlet weak var sortButton: UIButton!
+    
     let profileViewModel = ProfileViewModel()
-    let sortData: [String] = ["Age - Ascending","Age - Descending","Name - Ascending","Name - Descending"]
-    let filterData: [String] = ["Female","Male","Other"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +21,6 @@ class ProfilesViewController: UIViewController {
         presentLogin()
         profileViewModel.delegate = self
         
-        sortPickerView.dataSource = self
-        sortPickerView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +48,11 @@ class ProfilesViewController: UIViewController {
         performSegue(withIdentifier: Constants.PRESENT_LOGIN_SEGUE, sender: self)
     }
 
+    
+    @IBAction func sortFilterButtonTapped(_ sender: Any) {
+        
+    }
+    
 }
 
 extension ProfilesViewController : LoginViewDelegate {
@@ -74,18 +75,6 @@ extension ProfilesViewController : ProfileViewModelDelegate {
     }
 }
 
-extension ProfilesViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return sortData.count
-    }
-    
-    
-}
-
 extension ProfilesViewController : UICollectionViewDelegate {
     
 }
@@ -106,6 +95,7 @@ extension ProfilesViewController : UICollectionViewDataSource {
         cell.nameLabel.text = profile.getFirstNameLastName()
         cell.ageLabel.text = String(profile.age)
         cell.hobbiesLabel.text = profile.hobbies.description
+        cell.genderLabel.text = profile.gender
         
         switch profile.gender {
         case "female":
