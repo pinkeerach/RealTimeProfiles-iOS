@@ -21,6 +21,7 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var profileImageUrlTextfield: UITextField!
     @IBOutlet weak var hobbiesTextfield: UITextField!
     
+    @IBOutlet weak var ageTextField: UITextField!
     var delegate: CreateProfileViewControllerDelegate?
     
     let profileViewModel: ProfileViewModel = ProfileViewModel()
@@ -37,23 +38,9 @@ class CreateProfileViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     @IBAction func cancelProfileCreation() {
-
-        self.dismiss(animated: true) {}
         
-//        if let del = delegate {
-//            del.profileCreationCancelled()
-//        }
+        self.dismiss(animated: true) {}
     }
     
     @IBAction func submitNewProfile() {
@@ -62,14 +49,20 @@ class CreateProfileViewController: UIViewController {
             let lastname = lastNameTextfield.text,
             let profileimage = profileImageUrlTextfield.text,
             let gender = genderTextfield.text,
-            let hobbies = hobbiesTextfield.text {
+            let hobbies = hobbiesTextfield.text,
+            let ageString = ageTextField.text,
+            let age = Int(ageString) {
             
-            let profile = Profile(identifier: nil, firstName: firstname, lastName: lastname, profilePicture: profileimage, age: 12, hobbies: hobbies, gender: gender)
+            let profile = Profile(identifier: nil, firstName: firstname, lastName: lastname, profilePicture: profileimage, age: age, hobbies: hobbies, gender: gender)
             
             profileViewModel.createProfile(withProfile: profile)
 
             self.dismiss(animated: true) {}
+        } else {
+            let alert = UIAlertController(title: "Missing Data", message: "All fields are required", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
-        
     }
 }

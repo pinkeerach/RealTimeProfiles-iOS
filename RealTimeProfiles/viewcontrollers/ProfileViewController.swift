@@ -97,6 +97,10 @@ extension ProfilesViewController : UICollectionViewDataSource {
         cell.hobbiesLabel.text = profile.hobbies.description
         cell.genderLabel.text = profile.gender
         
+        if let image = profileViewModel.loadImage(fromUrl: profile.profilePicture) {
+            cell.profileImageView.image = image
+        }
+        
         switch profile.gender {
         case "female":
             cell.backgroundColor = Constants.PINK_COLOR

@@ -40,9 +40,9 @@ class ProfileViewModel {
             
         }
         
-//        profilesRef.observe(.childChanged) { snapshot in
-//
-//        }
+        profilesRef.observe(.childChanged) { snapshot in
+            print("CHILD CHANGED : \(snapshot)")
+        }
     }
     
     func createProfile(withProfile profile: Profile) {
@@ -63,4 +63,19 @@ class ProfileViewModel {
 //
 //
 //    }
+    
+    func loadImage(fromUrl urlString: String) -> UIImage? {
+        if let url = URL(string: urlString) {
+            do{
+                let data = try Data(contentsOf: url)
+                if let image = UIImage(data: data) {
+                    return image
+                }
+            } catch {
+                
+            }
+        }
+        
+        return UIImage(named: "rachAtTrevi-300")
+    }
 }

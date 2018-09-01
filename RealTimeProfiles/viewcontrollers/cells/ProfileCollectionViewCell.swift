@@ -15,4 +15,5 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var hobbiesLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
+    
 }

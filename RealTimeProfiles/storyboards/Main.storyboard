@@ -99,7 +99,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rachAtTrevi-300" translatesAutoresizingMaskIntoConstraints="NO" id="UHR-r7-ncn">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UHR-r7-ncn">
                                                                     <rect key="frame" x="40" y="40" width="70" height="70"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="70" id="ZUL-6u-sUJ"/>
@@ -186,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oK-5X-7yK">
-                                <rect key="frame" x="0.0" y="54" width="320" height="514"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eLH-JD-Z2e">
                                         <rect key="frame" x="20" y="20" width="280" height="463"/>
@@ -233,23 +233,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link to profile image" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRL-Af-0Eo">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link to profile image (www.prandom.com/image.png" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRL-Af-0Eo">
                                                 <rect key="frame" x="0.0" y="242" width="280" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoR-Vn-WvS">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoR-Vn-WvS">
                                                 <rect key="frame" x="0.0" y="282" width="280" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="need a selector" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJD-WE-6ki">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your age in whole numbers" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJD-WE-6ki">
                                                 <rect key="frame" x="0.0" y="312.5" width="280" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hobbies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjV-XX-4KF">
                                                 <rect key="frame" x="0.0" y="352.5" width="280" height="20.5"/>
@@ -284,13 +284,12 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6t-Rp-PmP">
-                                <rect key="frame" x="278" y="40" width="22" height="24"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="YEp-Jp-RDL"/>
-                                    <constraint firstAttribute="width" constant="22" id="cyX-G6-SqH"/>
+                                    <constraint firstAttribute="height" constant="50" id="YEp-Jp-RDL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="X"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="cancelProfileCreation" destination="cmi-G9-bfq" eventType="touchUpInside" id="KhH-cd-K8x"/>
                                 </connections>
@@ -300,15 +299,17 @@
                         <constraints>
                             <constraint firstItem="4oK-5X-7yK" firstAttribute="leading" secondItem="Stz-Dh-gVZ" secondAttribute="leading" id="9rw-jz-fI2"/>
                             <constraint firstItem="4oK-5X-7yK" firstAttribute="bottom" secondItem="Stz-Dh-gVZ" secondAttribute="bottom" id="FZ1-UQ-am1"/>
+                            <constraint firstItem="q6t-Rp-PmP" firstAttribute="leading" secondItem="Stz-Dh-gVZ" secondAttribute="leading" id="IZP-Xk-sX6"/>
                             <constraint firstItem="QIq-bk-y2x" firstAttribute="width" secondItem="9cf-xJ-Zfc" secondAttribute="width" constant="-40" id="Ktx-wE-17L"/>
-                            <constraint firstItem="Stz-Dh-gVZ" firstAttribute="trailing" secondItem="q6t-Rp-PmP" secondAttribute="trailing" constant="20" id="Ocx-f5-vwm"/>
-                            <constraint firstItem="4oK-5X-7yK" firstAttribute="top" secondItem="q6t-Rp-PmP" secondAttribute="bottom" constant="-10" id="auM-Kt-zpg"/>
-                            <constraint firstItem="q6t-Rp-PmP" firstAttribute="top" secondItem="Stz-Dh-gVZ" secondAttribute="top" constant="20" id="dkF-oc-5AW"/>
+                            <constraint firstItem="Stz-Dh-gVZ" firstAttribute="trailing" secondItem="q6t-Rp-PmP" secondAttribute="trailing" id="Ocx-f5-vwm"/>
+                            <constraint firstItem="4oK-5X-7yK" firstAttribute="top" secondItem="q6t-Rp-PmP" secondAttribute="bottom" id="auM-Kt-zpg"/>
+                            <constraint firstItem="q6t-Rp-PmP" firstAttribute="top" secondItem="Stz-Dh-gVZ" secondAttribute="top" id="dkF-oc-5AW"/>
                             <constraint firstItem="4oK-5X-7yK" firstAttribute="trailing" secondItem="Stz-Dh-gVZ" secondAttribute="trailing" id="m22-dD-I0Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Stz-Dh-gVZ"/>
                     </view>
                     <connections>
+                        <outlet property="ageTextField" destination="bJD-WE-6ki" id="aTX-5T-x6t"/>
                         <outlet property="firstNameTextfield" destination="QIq-bk-y2x" id="Ze3-ru-lh2"/>
                         <outlet property="genderTextfield" destination="7So-E0-pIp" id="sYJ-qd-Nb8"/>
                         <outlet property="hobbiesTextfield" destination="Fvv-hd-O7Q" id="Fnl-vO-Xq2"/>
@@ -484,7 +485,4 @@
             <point key="canvasLocation" x="31.875" y="32.74647887323944"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="rachAtTrevi-300" width="300" height="299"/>
-    </resources>
 </document>
