@@ -84,6 +84,7 @@ extension ProfilesViewController : LoginViewDelegate {
 extension ProfilesViewController : ProfileViewModelDelegate {
     func profilesChanged() {
         profilesCollectionView.reloadData()
+        
         dismiss(animated: true, completion: nil)
     }
 }

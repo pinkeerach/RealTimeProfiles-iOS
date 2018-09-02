@@ -62,9 +62,11 @@ class ProfileViewModel {
             
             let key = snapshot.key
             
-            self.buildProfiles(fromSnapshot: snapshot)
+            self.profiles = self.profiles.filter({ $0.identifier != key })
             
-            print("SEE THAT CHILD WAS REMOVED")
+            if let delegate = self.delegate {
+                delegate.profilesChanged()
+            }
         }
     }
     
@@ -76,13 +78,14 @@ class ProfileViewModel {
             let profile = Profile.createProfile(withData: array, identifier: key)
             
             profiles.append(profile)
-            
         }
 
         if let delegate = self.delegate {
             delegate.profilesChanged()
         }
     }
+    
+    // MARK: - Create, update, delete calls
     
     func createProfile(_ profile: Profile) {
         
@@ -97,6 +100,23 @@ class ProfileViewModel {
         }
     }
     
+    func updateProfile(_ profile: Profile) {
+        if let key = profile.identifier {
+            let ref = Database.database().reference()
+            let profileData = profile.getData()
+            let childUpdates = ["/profiles/\(key)" : profileData]
+            ref.updateChildValues(childUpdates)
+        }
+    }
+    
+    func deleteProfile(_ profile: Profile) {
+        if let key = profile.identifier {
+            let ref = Database.database().reference(withPath: "profiles").child(key)
+            ref.removeValue()
+        }
+    }
+
+    // MARK: - Other service calls
     func loadImage(fromUrl urlString: String) -> UIImage? {
         if let url = URL(string: urlString) {
             do{
@@ -110,19 +130,6 @@ class ProfileViewModel {
         }
         
         return UIImage(named: "rachAtTrevi-300") //default
-    }
-    
-    func updateProfile(_ profile: Profile) {
-        if let key = profile.identifier {
-            let ref = Database.database().reference()
-            let profileData = profile.getData()
-            let childUpdates = ["/profiles/\(key)" : profileData]
-            ref.updateChildValues(childUpdates)
-        }
-    }
-    
-    func deleteProfile(_ profile: Profile) {
-        
     }
     
     func sortProfiles(_ sortValue: ProfileSortType) {
@@ -140,11 +147,11 @@ class ProfileViewModel {
         case ProfileSortType.NameDescending:
             profiles.sort(by: { $0.lastName.uppercased() > $1.lastName.uppercased() })
             break
-//        default:
-//            break
         }
         
-        delegate?.profilesChanged()
+        if let delegate = self.delegate {
+            delegate.profilesChanged()
+        }
         
     }
     

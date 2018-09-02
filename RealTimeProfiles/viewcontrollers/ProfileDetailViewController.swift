@@ -54,11 +54,15 @@ class ProfileDetailViewController: UIViewController {
     
     @IBAction func deleteButtonTapped() {
         let alert = UIAlertController(title: "Delete Confirmation", message: "This is a destructive action. There is no undo. Are you sure you want to delete this record?", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "I'm Sure!", style: .default, handler: { (action) in
+            
             if let profile = self.selectedProfile {
                 self.profileViewModel.deleteProfile(profile)
+                self.navigationController?.popViewController(animated: true)
             }
         }))
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
