@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 
 struct Constants {
-    
+    static let sortData: [String] = ["Age - Ascending","Age - Descending","Name - Ascending","Name - Descending"]
+    static let filterData: [String] = ["Female","Male","Other"]
+
     static let PRESENT_LOGIN_SEGUE = "presentLoginSegue"
     static let PRESENT_CREATE_PROFILE_SEGUE = "presentCreateProfileSegue"
     static let PRESENT_PROFILE_DETAIL_SEGUE = "profileDetailSegue"
+    static let PRESENT_FILTER_SORT_SEGUE = "filterSortSegue"
     
     static let BLUE_COLOR = UIColor(displayP3Red: 214/255, green: 230/255, blue: 255/255, alpha: 1.0)
     static let PINK_COLOR = UIColor(displayP3Red: 255/255, green: 214/255, blue: 250/255, alpha: 1.0)

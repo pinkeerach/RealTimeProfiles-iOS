@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol FilterSortViewDelegate {
+    func sortSelectionMade(_ sortSelection: String)
+    func filterSelectionMade(_ filterSelection: String)
+}
+
 class FilterSortViewController: UIViewController {
 
-    let sortData: [String] = ["Age - Ascending","Age - Descending","Name - Ascending","Name - Descending"]
-    let filterData: [String] = ["Female","Male","Other"]
-
+    var delegate: FilterSortViewDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,28 +32,27 @@ class FilterSortViewController: UIViewController {
         dismiss(animated: true) {}
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension FilterSortViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return filterData.count
+            return "Filter By:"
         }
         
-        return sortData.count
+        return "Sort By:"
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return Constants.filterData.count
+        }
+        
+        return Constants.sortData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,10 +62,10 @@ extension FilterSortViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.section {
         case 0: //filter
-            cell.textLabel?.text = filterData[indexPath.row]
+            cell.textLabel?.text = Constants.filterData[indexPath.row]
             break
         case 1:
-            cell.textLabel?.text = sortData[indexPath.row]
+            cell.textLabel?.text = Constants.sortData[indexPath.row]
             break
         default:
             break
@@ -71,5 +74,20 @@ extension FilterSortViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let delegate = self.delegate else {
+            return
+        }
+        
+        if indexPath.section == 0 {
+            delegate.filterSelectionMade(Constants.filterData[indexPath.row])
+        }
+        
+        delegate.sortSelectionMade(Constants.sortData[indexPath.row])
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        dismiss(animated: true, completion: nil)
+    }
 }

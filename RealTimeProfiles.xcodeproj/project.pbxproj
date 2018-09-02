@@ -195,8 +195,8 @@
 				9655C6AC213349FC001C56C3 /* CreateProfileViewController.swift */,
 				96555D0C213B3430005291C8 /* FilterSortViewController.swift */,
 				96F1658A212BA0B00018BC4B /* LoginViewController.swift */,
-				963488F02124F7010060318B /* ProfileViewController.swift */,
 				96555D0E213B46A6005291C8 /* ProfileDetailViewController.swift */,
+				963488F02124F7010060318B /* ProfileViewController.swift */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";

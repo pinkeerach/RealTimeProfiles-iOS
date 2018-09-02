@@ -34,7 +34,7 @@
                                                         </constraints>
                                                         <state key="normal" title="Filter &amp; Sort"/>
                                                         <connections>
-                                                            <segue destination="Ht0-l5-Lce" kind="presentation" id="DKu-fK-7ro"/>
+                                                            <segue destination="Ht0-l5-Lce" kind="presentation" identifier="filterSortSegue" id="DKu-fK-7ro"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SC1-Sg-ZOw">
@@ -177,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029.375" y="32.74647887323944"/>
+            <point key="canvasLocation" x="943" y="33"/>
         </scene>
         <!--Create Profile View Controller-->
         <scene sceneID="8h8-p2-WaH">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lu1-dX-CT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="-945"/>
+            <point key="canvasLocation" x="1862" y="-758"/>
         </scene>
         <!--Filter & Sort-->
         <scene sceneID="lnX-2Z-Mmv">
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIL-lM-iU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="606"/>
+            <point key="canvasLocation" x="1862" y="857"/>
         </scene>
         <!--Profile Detail View Controller-->
         <scene sceneID="YZ1-QU-PqI">
@@ -398,7 +398,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XIt-oX-Qgq">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="512"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="532"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yly-qi-Ai7">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -413,7 +413,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-e6-w1L">
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xgt-e6-w1L">
                                                 <rect key="frame" x="0.0" y="190.5" width="320" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -425,8 +425,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-5j-gUH">
-                                                <rect key="frame" x="0.0" y="261" width="83.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckA-5j-gUH">
+                                                <rect key="frame" x="0.0" y="261" width="320" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -437,8 +437,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-ai-Cha">
-                                                <rect key="frame" x="0.0" y="331.5" width="67" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-ai-Cha">
+                                                <rect key="frame" x="0.0" y="331.5" width="320" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -450,23 +450,38 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="hobbies" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LUo-7Q-GgO">
-                                                <rect key="frame" x="0.0" y="402" width="73" height="30"/>
+                                                <rect key="frame" x="0.0" y="402" width="320" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXs-iG-Boz">
-                                                <rect key="frame" x="0.0" y="442" width="320" height="30"/>
+                                                <rect key="frame" x="0.0" y="442" width="320" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="9Ow-sd-eUS"/>
+                                                </constraints>
                                                 <state key="normal" title="Update Profile"/>
+                                                <connections>
+                                                    <action selector="updateButtonTapped" destination="eR9-UZ-rVv" eventType="touchUpInside" id="HSc-Qa-53r"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHb-gd-u2N">
-                                                <rect key="frame" x="0.0" y="482" width="320" height="30"/>
+                                                <rect key="frame" x="0.0" y="492" width="320" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="FG0-w9-WME"/>
+                                                </constraints>
                                                 <state key="normal" title="Remove Profile"/>
+                                                <connections>
+                                                    <action selector="deleteButtonTapped" destination="eR9-UZ-rVv" eventType="touchUpInside" id="rBZ-WP-w7Z"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Xgt-e6-w1L" firstAttribute="width" secondItem="XIt-oX-Qgq" secondAttribute="width" id="0aq-3Q-G6r"/>
+                                            <constraint firstItem="ckA-5j-gUH" firstAttribute="width" secondItem="Xgt-e6-w1L" secondAttribute="width" id="1hd-4a-dmW"/>
+                                            <constraint firstItem="SH1-ai-Cha" firstAttribute="width" secondItem="ckA-5j-gUH" secondAttribute="width" id="9KL-5S-nPV"/>
                                             <constraint firstItem="zXs-iG-Boz" firstAttribute="width" secondItem="eHb-gd-u2N" secondAttribute="width" id="R1k-CX-8Zk"/>
+                                            <constraint firstItem="LUo-7Q-GgO" firstAttribute="width" secondItem="SH1-ai-Cha" secondAttribute="width" id="Tjl-03-R5W"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -505,7 +520,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woU-lA-Syu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2538.75" y="-274.64788732394368"/>
+            <point key="canvasLocation" x="1862" y="33"/>
         </scene>
         <!--Log In-->
         <scene sceneID="OpO-rD-yXx">
@@ -587,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJB-Ah-p27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="857"/>
+            <point key="canvasLocation" x="941" y="857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="803-0m-vQe">

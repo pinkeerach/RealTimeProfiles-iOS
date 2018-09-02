@@ -41,7 +41,6 @@ class ProfileViewModel {
         }
         
         profilesRef.observe(.childChanged) { snapshot in
-            //print("CHILD CHANGED : \(snapshot)")
             
             let key = snapshot.key
             
@@ -64,9 +63,16 @@ class ProfileViewModel {
                 delegate.profilesChanged()
             }
         }
+        
+        profilesRef.observe(.childRemoved) { (snapshot) in
+            
+            let key = snapshot.key
+            
+            print("SEE THAT CHILD WAS REMOVED")
+        }
     }
     
-    func createProfile(withProfile profile: Profile) {
+    func createProfile(_ profile: Profile) {
         
         let ref = Database.database().reference().child("profiles").childByAutoId()
         
@@ -92,5 +98,24 @@ class ProfileViewModel {
         }
         
         return UIImage(named: "rachAtTrevi-300") //default
+    }
+    
+    func updateProfile(_ profile: Profile) {
+        if let key = profile.identifier {
+            let ref = Database.database().reference()
+            let profileData = profile.getData()
+            let childUpdates = ["/profiles/\(key)" : profileData]
+            ref.updateChildValues(childUpdates)
+        }
+    }
+    
+    func deleteProfile(_ profile: Profile) {
+        
+    }
+    
+    func sortProfiles(_ sortValue: String) {
+        let ref = Database.database().reference()
+        let sortQuery = ref.child("profiles").queryOrdered(byChild: "age")
+        print("i got here now")
     }
 }

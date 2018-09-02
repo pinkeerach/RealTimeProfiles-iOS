@@ -15,7 +15,7 @@ class AppearanceProxy {
         UIButton.appearance(whenContainedInInstancesOf: [UIStackView.self]).backgroundColor = Constants.DARK_BLUE_COLOR
         UIButton.appearance(whenContainedInInstancesOf: [UIStackView.self]).tintColor = UIColor.white
         
-        UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).backgroundColor = UIColor.white
+        UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).backgroundColor = UIColor.clear
         UIButton.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).tintColor = Constants.DARK_BLUE_COLOR
     }
 }

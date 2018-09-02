@@ -39,4 +39,27 @@ class ProfileDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func updateButtonTapped() {
+        if let profile = selectedProfile,
+            let hobbies = hobbiesTextField.text {
+            
+            var newProfile = profile
+            newProfile.hobbies = hobbies
+            
+            profileViewModel.updateProfile(newProfile)
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func deleteButtonTapped() {
+        let alert = UIAlertController(title: "Delete Confirmation", message: "This is a destructive action. There is no undo. Are you sure you want to delete this record?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "I'm Sure!", style: .default, handler: { (action) in
+            if let profile = self.selectedProfile {
+                self.profileViewModel.deleteProfile(profile)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }

@@ -50,7 +50,7 @@ class CreateProfileViewController: UIViewController {
             
             let profile = Profile(identifier: nil, firstName: firstname, lastName: lastname, profilePicture: profileimage, age: age, hobbies: hobbies, gender: gender)
             
-            profileViewModel.createProfile(withProfile: profile)
+            profileViewModel.createProfile(profile)
 
             self.dismiss(animated: true) {}
         } else {

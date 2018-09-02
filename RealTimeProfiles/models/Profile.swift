@@ -15,7 +15,7 @@ struct Profile: Decodable {
     let profilePicture : String
     let age : Int
     // TODO: dateOfBirth
-    let hobbies : String
+    var hobbies : String
     let gender : String
     
     static let identifierKey = "identifier"

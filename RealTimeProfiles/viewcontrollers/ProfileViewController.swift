@@ -34,6 +34,10 @@ class ProfilesViewController: UIViewController {
             if let loginViewController = segue.destination as? LoginViewController {
                 loginViewController.delegate = self
             }
+        case Constants.PRESENT_FILTER_SORT_SEGUE:
+            if let filterSortController = segue.destination as? FilterSortViewController {
+                filterSortController.delegate = self
+            }
         case Constants.PRESENT_PROFILE_DETAIL_SEGUE:
             
             if let detailViewController = segue.destination as? ProfileDetailViewController,
@@ -71,6 +75,16 @@ extension ProfilesViewController : LoginViewDelegate {
 extension ProfilesViewController : ProfileViewModelDelegate {
     func profilesChanged() {
         profilesCollectionView.reloadData()
+    }
+}
+
+extension ProfilesViewController : FilterSortViewDelegate {
+    func filterSelectionMade(_ filterSelection: String) {
+        
+    }
+    
+    func sortSelectionMade(_ sortSelection: String) {
+        profileViewModel.sortProfiles(sortSelection)
     }
 }
 
