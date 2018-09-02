@@ -52,8 +52,8 @@ class CreateProfileViewController: UIViewController {
             
             profileViewModel.createProfile(profile)
 
-            self.dismiss(animated: true) {}
         } else {
+            
             let alert = UIAlertController(title: "Missing Data", message: "All fields are required", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
             }))

@@ -30,10 +30,6 @@ class ProfileViewModel {
             profilesRef = Database.database().reference(withPath: "profiles")
         }
         
-        profilesRef.observe(.value) { snapshot in
-            self.buildProfiles(fromSnapshot: snapshot)
-        }
-        
         profilesRef.observe(.childAdded) { snapshot in
             self.buildProfiles(fromSnapshot: snapshot)
         }
@@ -65,6 +61,8 @@ class ProfileViewModel {
         profilesRef.observe(.childRemoved) { (snapshot) in
             
             let key = snapshot.key
+            
+            self.buildProfiles(fromSnapshot: snapshot)
             
             print("SEE THAT CHILD WAS REMOVED")
         }

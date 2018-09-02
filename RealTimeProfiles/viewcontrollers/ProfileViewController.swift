@@ -64,6 +64,8 @@ class ProfilesViewController: UIViewController {
     }
 }
 
+// MARK: - Login View Delegate
+
 extension ProfilesViewController : LoginViewDelegate {
     func loginDidSucceed() {
         
@@ -78,12 +80,15 @@ extension ProfilesViewController : LoginViewDelegate {
     }
 }
 
+// MARK: - Profile ViewModel Delegate
 extension ProfilesViewController : ProfileViewModelDelegate {
     func profilesChanged() {
         profilesCollectionView.reloadData()
+        dismiss(animated: true, completion: nil)
     }
 }
 
+// MARK: - Filter & Sort View Delegate
 extension ProfilesViewController : FilterSortViewDelegate {
     func filterSelectionMade(_ filterSelection: String) {
         profileViewModel.filterProfiles(byGender: filterSelection)
@@ -97,6 +102,8 @@ extension ProfilesViewController : FilterSortViewDelegate {
         filterSortLabel.text = "Sorted by \(sortSelection.rawValue)"
     }
 }
+
+// MARK: - Collection View Delegate & Datasource
 
 extension ProfilesViewController : UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
