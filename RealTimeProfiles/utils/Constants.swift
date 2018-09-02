@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 struct Constants {
-    static let sortData: [String] = ["Age - Ascending","Age - Descending","Name - Ascending","Name - Descending"]
-    static let filterData: [String] = ["Female","Male","Other"]
+    static let sortData: [ProfileSortType] = [ProfileSortType.AgeAscending, ProfileSortType.AgeDescending, ProfileSortType.NameAscending, ProfileSortType.NameDescending]
+    static let filterData: [String] = ["female","male","Other"]
 
     static let PRESENT_LOGIN_SEGUE = "presentLoginSegue"
     static let PRESENT_CREATE_PROFILE_SEGUE = "presentCreateProfileSegue"
@@ -22,4 +22,11 @@ struct Constants {
     static let PINK_COLOR = UIColor(displayP3Red: 255/255, green: 214/255, blue: 250/255, alpha: 1.0)
     static let GREEN_COLOR = UIColor(displayP3Red: 214/255, green: 255/255, blue: 219/255, alpha: 1.0)
     static let DARK_BLUE_COLOR = UIColor(displayP3Red: 7/255, green: 53/255, blue: 133/255, alpha: 1.0)
+}
+
+enum ProfileSortType: String {
+    case AgeAscending = "Age - Ascending"
+    case AgeDescending = "Age - Descending"
+    case NameAscending = "Last Name - Ascending"
+    case NameDescending = "Last Name - Descending"
 }

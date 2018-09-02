@@ -19,25 +19,23 @@ class ProfileViewModel {
     
     var profiles: [Profile] = []
     
-    func getProfiles() {
-        let profilesRef = Database.database().reference(withPath: "profiles")
+    func getProfiles(filteredBy filter: String?, value: String?) {
         
+        var profilesRef: DatabaseQuery
         profiles = []
-        
-        profilesRef.observe(DataEventType.childAdded) { snapshot in
-            
-            let key = snapshot.key
 
-            if let array = snapshot.valueInExportFormat() as? [String: Any?] {
-                let profile = Profile.createProfile(withData: array, identifier: key)
-                
-                self.profiles.append(profile)
-                
-                if let delegate = self.delegate {
-                    delegate.profilesChanged()
-                }
-            }
-            
+        if let filterField = filter, let filterValue = value {
+            profilesRef = Database.database().reference().child("profiles").queryOrdered(byChild: filterField).queryEqual(toValue: filterValue)
+        } else {
+            profilesRef = Database.database().reference(withPath: "profiles")
+        }
+        
+        profilesRef.observe(.value) { snapshot in
+            self.buildProfiles(fromSnapshot: snapshot)
+        }
+        
+        profilesRef.observe(.childAdded) { snapshot in
+            self.buildProfiles(fromSnapshot: snapshot)
         }
         
         profilesRef.observe(.childChanged) { snapshot in
@@ -69,6 +67,22 @@ class ProfileViewModel {
             let key = snapshot.key
             
             print("SEE THAT CHILD WAS REMOVED")
+        }
+    }
+    
+    private func buildProfiles(fromSnapshot snapshot: DataSnapshot) {
+        let key = snapshot.key
+        
+        if let array = snapshot.valueInExportFormat() as? [String: Any?],
+            key != "profiles" {
+            let profile = Profile.createProfile(withData: array, identifier: key)
+            
+            profiles.append(profile)
+            
+        }
+
+        if let delegate = self.delegate {
+            delegate.profilesChanged()
         }
     }
     
@@ -113,9 +127,30 @@ class ProfileViewModel {
         
     }
     
-    func sortProfiles(_ sortValue: String) {
-        let ref = Database.database().reference()
-        let sortQuery = ref.child("profiles").queryOrdered(byChild: "age")
-        print("i got here now")
+    func sortProfiles(_ sortValue: ProfileSortType) {
+        
+        switch sortValue {
+        case ProfileSortType.AgeAscending:
+            profiles.sort(by: { $0.age < $1.age })
+            break
+        case ProfileSortType.AgeDescending:
+            profiles.sort(by: { $0.age > $1.age })
+            break
+        case ProfileSortType.NameAscending:
+            profiles.sort(by: { $0.lastName.uppercased() < $1.lastName.uppercased() })
+            break
+        case ProfileSortType.NameDescending:
+            profiles.sort(by: { $0.lastName.uppercased() > $1.lastName.uppercased() })
+            break
+//        default:
+//            break
+        }
+        
+        delegate?.profilesChanged()
+        
+    }
+    
+    func filterProfiles(byGender gender: String) {
+        getProfiles(filteredBy: "gender", value: gender)
     }
 }

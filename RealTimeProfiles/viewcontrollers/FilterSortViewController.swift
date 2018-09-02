@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FilterSortViewDelegate {
-    func sortSelectionMade(_ sortSelection: String)
+    func sortSelectionMade(_ sortSelection: ProfileSortType)
     func filterSelectionMade(_ filterSelection: String)
 }
 
@@ -65,7 +65,7 @@ extension FilterSortViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = Constants.filterData[indexPath.row]
             break
         case 1:
-            cell.textLabel?.text = Constants.sortData[indexPath.row]
+            cell.textLabel?.text = Constants.sortData[indexPath.row].rawValue
             break
         default:
             break
@@ -82,11 +82,11 @@ extension FilterSortViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             delegate.filterSelectionMade(Constants.filterData[indexPath.row])
+        } else {            
+            delegate.sortSelectionMade(Constants.sortData[indexPath.row])
         }
         
-        delegate.sortSelectionMade(Constants.sortData[indexPath.row])
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
         
         dismiss(animated: true, completion: nil)
     }

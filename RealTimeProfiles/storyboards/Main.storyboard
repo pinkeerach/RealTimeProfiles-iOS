@@ -21,14 +21,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V3P-fd-CKV">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kku-mn-XwX">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3gc-TA-pdu">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6D0-kJ-QcR">
-                                                <rect key="frame" x="10" y="10" width="300" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdH-Ds-ZZ0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="3nd-g1-ryM"/>
                                                         </constraints>
@@ -38,26 +38,31 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SC1-Sg-ZOw">
-                                                        <rect key="frame" x="160" y="0.0" width="140" height="40"/>
+                                                        <rect key="frame" x="170" y="0.0" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Jc1-ki-qmU"/>
                                                         </constraints>
                                                         <state key="normal" title="Clear"/>
+                                                        <connections>
+                                                            <action selector="clearFilterSortButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="NzN-45-yF3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No filters or sorting selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3X-dy-qkj">
+                                                <rect key="frame" x="0.0" y="40" width="320" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="sGj-U8-fxr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="6D0-kJ-QcR" firstAttribute="leading" secondItem="Kku-mn-XwX" secondAttribute="leading" constant="10" id="1fP-OQ-5Ld"/>
-                                            <constraint firstAttribute="trailing" secondItem="6D0-kJ-QcR" secondAttribute="trailing" constant="10" id="LPd-gM-uZT"/>
-                                            <constraint firstAttribute="height" constant="60" id="ctI-fK-0Dc"/>
-                                            <constraint firstItem="6D0-kJ-QcR" firstAttribute="top" secondItem="Kku-mn-XwX" secondAttribute="top" constant="10" id="eJX-wM-PyL"/>
-                                            <constraint firstAttribute="bottom" secondItem="6D0-kJ-QcR" secondAttribute="bottom" constant="10" id="qGr-tA-P8H"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hjC-zh-Lac">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="444"/>
+                                        <rect key="frame" x="0.0" y="65" width="320" height="439"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" sectionInsetReference="safeArea" id="yJE-lf-P7h">
                                             <size key="itemSize" width="150" height="150"/>
@@ -170,14 +175,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="clearButton" destination="SC1-Sg-ZOw" id="f9I-SI-3sM"/>
+                        <outlet property="filterSortButton" destination="sdH-Ds-ZZ0" id="a4t-bZ-Zue"/>
+                        <outlet property="filterSortLabel" destination="A3X-dy-qkj" id="vTq-wj-IIl"/>
                         <outlet property="profilesCollectionView" destination="hjC-zh-Lac" id="n64-3r-QOX"/>
-                        <outlet property="sortButton" destination="SC1-Sg-ZOw" id="f9I-SI-3sM"/>
                         <segue destination="l2m-sM-jVo" kind="presentation" identifier="presentLoginSegue" id="TBF-b4-9wu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="943" y="33"/>
+            <point key="canvasLocation" x="941.25" y="32.74647887323944"/>
         </scene>
         <!--Create Profile View Controller-->
         <scene sceneID="8h8-p2-WaH">

@@ -11,7 +11,9 @@ import UIKit
 class ProfilesViewController: UIViewController {
 
     @IBOutlet weak var profilesCollectionView: UICollectionView!
-    @IBOutlet weak var sortButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var filterSortButton: UIButton!
+    @IBOutlet weak var filterSortLabel: UILabel!
     
     let profileViewModel = ProfileViewModel()
     
@@ -56,6 +58,10 @@ class ProfilesViewController: UIViewController {
         performSegue(withIdentifier: Constants.PRESENT_LOGIN_SEGUE, sender: self)
     }
     
+    @IBAction func clearFilterSortButtonTapped() {
+        profileViewModel.getProfiles(filteredBy: nil, value: nil)
+        filterSortLabel.text = "No filters or sorting selected"
+    }
 }
 
 extension ProfilesViewController : LoginViewDelegate {
@@ -64,7 +70,7 @@ extension ProfilesViewController : LoginViewDelegate {
         dismiss(animated: true) {
         }
         
-        profileViewModel.getProfiles()
+        profileViewModel.getProfiles(filteredBy: nil, value: nil)
     }
     
     func logingDidFail() {
@@ -80,11 +86,15 @@ extension ProfilesViewController : ProfileViewModelDelegate {
 
 extension ProfilesViewController : FilterSortViewDelegate {
     func filterSelectionMade(_ filterSelection: String) {
+        profileViewModel.filterProfiles(byGender: filterSelection)
         
+        filterSortLabel.text = "Filtered by \(filterSelection)"
     }
     
-    func sortSelectionMade(_ sortSelection: String) {
+    func sortSelectionMade(_ sortSelection: ProfileSortType) {
         profileViewModel.sortProfiles(sortSelection)
+        
+        filterSortLabel.text = "Sorted by \(sortSelection.rawValue)"
     }
 }
 
