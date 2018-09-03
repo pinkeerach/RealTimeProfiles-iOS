@@ -8,7 +8,7 @@ The current codebase is written in Swift 4 using Xcode 9.4. Use the RealTimeProf
 ### Firebase Config
 After cloning the repo, you'll quickly notice that the Firebase configuration plist is missing. This is intentional to ensure you use the appropriate Firebase account (and don't run up charges on mine).
 
-Before you attempt to run the app, you'll need to setup a Firebase project for the app, and add your own `GoogleService-Info.plist` to the `RealTimeProfiles/configs` folder. You can [download them from Firebase](https://support.google.com/firebase/answer/7015592). 
+Before you attempt to run the app, you'll need to setup a Firebase project for the app, and add your own `GoogleService-Info.plist` to the `RealTimeProfiles/configs` folder. You can [download the config from Firebase](https://support.google.com/firebase/answer/7015592). 
 
 ### Authentication
 Security should always be considered up front. As such, this app requires authentication, albeit a very simple implementation for now. 
